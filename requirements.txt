@@ -15,3 +15,5 @@ referencing==0.37.0
 requests==2.33.1
 rpds-py==0.30.0
 urllib3==2.6.3
+
+selenium~=4.43.0
