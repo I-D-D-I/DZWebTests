@@ -1,3 +1,5 @@
+import time
+
 import allure
 
 from core.BaseTest import browser
@@ -19,6 +21,7 @@ def test_go_to_recovery_after_many_fails(browser):
     for i in range(3):
         LoginPage.type_password(PASSWORD_TEXT)
         LoginPage.click_login()
+        time.sleep(3)
 
     LoginPage.click_recovery()
     RecoveryPageHelper(browser)
