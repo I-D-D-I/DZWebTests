@@ -7,7 +7,7 @@ class BasePage:
         self.driver = driver
 
     def find_element(self, locator, time=5):
-        return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator), message=f"Не удалось найти элемент {locator}")
+        return WebDriverWait(self.driver, time).until(expected_conditions.element_to_be_clickable(locator), message=f"Не удалось найти элемент {locator}")
 
     @allure.step('Открываем страницу')
     def get_url(self, url):
@@ -15,4 +15,3 @@ class BasePage:
 
     def attach_screenshot(self):
         allure.attach(self.driver.get_screenshot_as_png(), "screenshot", allure.attachment_type.PNG)
-    
