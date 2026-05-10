@@ -1,5 +1,3 @@
-import time
-
 import allure
 
 from core.BaseTest import browser
