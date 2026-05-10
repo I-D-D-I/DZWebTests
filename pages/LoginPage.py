@@ -69,4 +69,4 @@ class LoginPageHelper(BasePage):
     @allure.step('Переходим к регистрации')
     def click_registration(self):
         self.attach_screenshot()
-        self.find_element(LoginPageLocators.BUTTON_SIGN_IN).click()
+        self.driver.get("https://ok.ru/dk?st.cmd=anonymRegistrationEnterPhone")
