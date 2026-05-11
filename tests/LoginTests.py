@@ -12,7 +12,8 @@ LOGIN_TEXT = 'email'
 @allure.suite('Проверка формы авторизации')
 @allure.title('Проверка ошибки при пустой форме авторизации')
 def test_empty_login_and_password(browser):
-    BasePage(browser).get_url(BASE_URL)
+    with allure.step(f'Открываем страницу {BASE_URL}'):
+        BasePage(browser).get_url(BASE_URL)
     LoginPage = LoginPageHelper(browser)
     LoginPage.click_login()
     assert LoginPage.get_error_text() == EMPTY_LOGIN_ERROR
