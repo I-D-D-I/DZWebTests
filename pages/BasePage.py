@@ -1,16 +1,32 @@
 import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
 
-class BasePage:
+
+class BasePageLocators:
+    LOGO_BUTTON = (By.XPATH, '//div[@class="toolbar_logo_img"]')
+    VK_ECOSYSTEM_BUTTON = (By.XPATH, '//span[@class="toolbar_nav_i_ic"]')
+    MORE_BUTTON = (By.XPATH, '//*[@class="svg-ic svg-More vk-ecosystem-icon"]')
+
+
+class BasePageHelper:
     def __init__(self, driver):
         self.driver = driver
 
+    def check_page(self):
+        with allure.step('Проверяем корректность загрузки страницы'):
+            self.attach_screenshot()
+        self.find_element(BasePageLocators.LOGO_BUTTON)
+        self.find_element(BasePageLocators.VK_ECOSYSTEM_BUTTON)
+
     def find_element(self, locator, time=5):
-        return WebDriverWait(self.driver, time).until(expected_conditions.element_to_be_clickable(locator), message=f"Не удалось найти элемент {locator}")
+        return WebDriverWait(self.driver, time).until(expected_conditions.element_to_be_clickable(locator),
+                                                      message=f"Не удалось найти элемент {locator}")
 
     def find_elements(self, locator, time=5):
-        return WebDriverWait(self.driver, time).until(expected_conditions.presence_of_all_elements_located(locator), message=f"Не удалось найти элементы {locator}")
+        return WebDriverWait(self.driver, time).until(expected_conditions.presence_of_all_elements_located(locator),
+                                                      message=f"Не удалось найти элементы {locator}")
 
     @allure.step('Открываем страницу')
     def get_url(self, url):
@@ -18,3 +34,18 @@ class BasePage:
 
     def attach_screenshot(self):
         allure.attach(self.driver.get_screenshot_as_png(), "screenshot", allure.attachment_type.PNG)
+
+    @allure.step('Нажимаем кнопку экосистемы')
+    def click_vk_ecosystem(self):
+        self.find_element(BasePageLocators.VK_ECOSYSTEM_BUTTON).click()
+
+    @allure.step('Нажимаем кнопку "Ещё"')
+    def click_more_button(self):
+        self.attach_screenshot()
+        self.find_element(BasePageLocators.MORE_BUTTON).click()
+
+    def get_window_id(self, index):
+        return self.driver.window_handles[index]
+
+    def switch_window(self, window_id):
+        self.driver.switch_to.window(window_id)
