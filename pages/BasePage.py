@@ -44,8 +44,10 @@ class BasePageHelper:
         self.attach_screenshot()
         self.find_element(BasePageLocators.MORE_BUTTON).click()
 
+    @allure.step('Получаем ID вкладки по индексу {index}')
     def get_window_id(self, index):
         return self.driver.window_handles[index]
 
+    @allure.step('Переключаемся на вкладку с ID {window_id}')
     def switch_window(self, window_id):
         self.driver.switch_to.window(window_id)
