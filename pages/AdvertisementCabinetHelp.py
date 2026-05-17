@@ -4,7 +4,7 @@ import allure
 
 
 class AdvertisementCabinetHelpLocators:
-    TITLE = (By.XPATH, '//span[text()="Рекламный кабинет"]')
+    TITLE = (By.XPATH, '//a[@class="help_app_list-item"]')
 
 
 class AdvertisementCabinetHelpHelper(BasePageHelper):
@@ -14,5 +14,5 @@ class AdvertisementCabinetHelpHelper(BasePageHelper):
 
     def check_page(self):
         with allure.step('Проверяем корректность загрузки страницы'):
-            self.attach_screenshot()
-        self.find_element(AdvertisementCabinetHelpLocators.TITLE)
+            self.find_element(AdvertisementCabinetHelpLocators.TITLE)
+        self.attach_screenshot()

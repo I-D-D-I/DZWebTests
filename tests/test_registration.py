@@ -6,7 +6,6 @@ from pages.LoginPage import LoginPageHelper
 from pages.RegistrationPage import RegistrationPageHelperHelper
 
 BASE_URL = 'https://ok.ru/'
-# REGISTRATION_URL = 'https://ok.ru/dk?st.cmd=anonymRegistrationEnterPhone'
 
 def test_registration_random_country(browser):
     BasePageHelper(browser).get_url(BASE_URL)
