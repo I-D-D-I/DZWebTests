@@ -5,11 +5,11 @@ from selenium.webdriver.common.by import By
 
 
 class LoginPageLocators:
-    LOGIN_TAB = (By.XPATH, '//a[contains(text(),"Вход")]')
+    LOGIN_TAB = (By.XPATH, '//a[@data-l="t,login_tab"]')
     QR_TAB = (By.XPATH, '//*[@title="QR-код"]')
     LOGIN_FIELD = (By.ID, 'field_email')
     PASSWORD_FIELD = (By.ID, 'field_password')
-    LOGIN_BUTTON = (By.XPATH, '//button[@data-test-id="enter-action"]')
+    LOGIN_BUTTON = (By.XPATH, '//button[@label="Войти"]')
     LOGIN_BUTTON_BY_QR = (By.XPATH, '//*[@label="Войти по QR-коду"]')
     LOGIN_BUTTON_NOT_ENTER = (By.XPATH, '//*[@aria-label="Не получается войти?"]')
     BUTTON_SIGN_IN = (By.XPATH, '//div[@class="LoginFormMain-module__bottom___YLtCo"]//span[@class="vkuiButton__in"]')
