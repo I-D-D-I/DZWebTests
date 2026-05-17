@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 class BasePageLocators:
     LOGO_BUTTON = (By.XPATH, '//div[@class="toolbar_logo_img"]')
     VK_ECOSYSTEM_BUTTON = (By.XPATH, '//div[@class="anon-tb-item-container"]')
-    MORE_BUTTON = (By.XPATH, '//*[@class="svg-ic svg-More vk-ecosystem-icon"]')
+    MORE_BUTTON = (By.XPATH, '//a[@data-l="t,more"]')
 
 
 class BasePageHelper:
