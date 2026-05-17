@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 
 class LoginPageLocators:
-    LOGIN_TAB = (By.XPATH, '//*[@title="Вход"]')
+    LOGIN_TAB = (By.XPATH, '//a[@data-l="t,login_tab"]')
     QR_TAB = (By.XPATH, '//*[@title="QR-код"]')
     LOGIN_FIELD = (By.ID, 'field_email')
     PASSWORD_FIELD = (By.ID, 'field_password')
