@@ -4,7 +4,7 @@ import allure
 
 
 class AdvertisementCabinetHelpLocators:
-    TITLE = (By.XPATH, '//a[@class="help_app_list-item"]')
+    TITLE = (By.XPATH, '//a[@href="/help/reklamnyi-kabinet"]')
 
 
 class AdvertisementCabinetHelpHelper(BasePageHelper):
