@@ -9,3 +9,9 @@ def browser():
     yield driver
     if driver:
         driver.quit()
+
+# @pytest.fixture(scope='session')
+# def browser():
+#     driver = webdriver.Chrome()
+#     yield driver
+#     driver.quit()

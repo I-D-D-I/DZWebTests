@@ -8,13 +8,14 @@ class RecoveryPageLocators:
     QR_CODE = (By.XPATH, '//*[@class="qr_code_image"]')
     SUPPORT_BUTTON = (By.XPATH, '//*[@data-l="t,support"]')
 
-class RecoveryPageHelperHelper(BasePageHelper):
+
+class RecoveryPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
 
     def check_page(self):
-        with allure.step('Проверяем корректность загрузки страницы'):
+        with allure.step('Проверяем корректность загрузки страницы восстанвления'):
             self.attach_screenshot()
         self.find_element(RecoveryPageLocators.PHONE_BUTTON)
         self.find_element(RecoveryPageLocators.EMAIL_BUTTON)

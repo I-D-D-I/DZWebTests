@@ -20,14 +20,18 @@ class LoginPageLocators:
     RESTORE_LINK = (By.XPATH, '//span[text()="Восстановить"]')
     BUTTON_CANCEL = (By.XPATH, '//button[.//span[text()="Отмена"]]')
 
-
 class LoginPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
 
+    # вызов функции делаем в конструктор, чтобы делалось автоматически
+    # паттерн pageObject, когда каждая страница является отдельным объектом, под нее заводится класс, описываются все элементы,
+    # которые есть конректно на этой странице, описываются все функции, действия, которые делаются на этой странице
+    # (кликнуть, заполнить поле, др.). Каждый экран - это новая страница. PageObject - страница-объект, все разделено.
+    # Одна страница - один класс.Не смешиваем страницы. На каждой странице свои локаторы. Каждая страница считается отдельным объектом.
     def check_page(self):
-        with allure.step('Проверяем корректность загрузки страницы'):
+        with allure.step('Проверяем корректность загрузки страницы входа'):
             self.attach_screenshot()
         self.find_element(LoginPageLocators.LOGIN_TAB)
         self.find_element(LoginPageLocators.QR_TAB)
@@ -43,13 +47,15 @@ class LoginPageHelper(BasePageHelper):
 
     @allure.step('Нажимаем на кнопку "Войти"')
     def click_login(self):
-        self.attach_screenshot()
+        # self.attach_screenshot()
         self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
+    #     click() - отдельный класс webelement-а, которому доступны различные свойства (кликнуть, очистить, получить атрибут который в DOM-е есть, отправить текст, др.)
 
     @allure.step('Получаем текст ошибки')
     def get_error_text(self):
         self.attach_screenshot()
         return self.find_element(LoginPageLocators.ERROR_TEXT).text
+    # без скобок, возвращаем просто текст
 
     @allure.step('Заполняем поле логин')
     def type_login(self, login: str):
@@ -66,7 +72,6 @@ class LoginPageHelper(BasePageHelper):
         self.attach_screenshot()
         self.find_element(LoginPageLocators.RESTORE_LINK).click()
 
-    @allure.step('Переходим к регистрации')
+    @allure.step('Переходим на страницу регистрации')
     def click_registration(self):
-        self.attach_screenshot()
         self.driver.get("https://ok.ru/dk?st.cmd=anonymRegistrationEnterPhone")

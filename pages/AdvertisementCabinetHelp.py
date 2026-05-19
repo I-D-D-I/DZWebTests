@@ -7,12 +7,12 @@ class AdvertisementCabinetHelpLocators:
     TITLE = (By.XPATH, '//a[@href="/help/reklamnyi-kabinet"]')
 
 
-class AdvertisementCabinetHelpHelper(BasePageHelper):
+class AdvertisementCabinetHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
 
     def check_page(self):
-        with allure.step('Проверяем корректность загрузки страницы'):
+        with allure.step('Проверяем корректность загрузки страницы Рекламный кабинет'):
             self.find_element(AdvertisementCabinetHelpLocators.TITLE)
         self.attach_screenshot()
